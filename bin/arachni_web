@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source "$(dirname $0)/readlink_f.sh"
+source "$(dirname "$(readlink_f "${0}")")"/../.system/setenv
+
+export HOME="$env_root/home/arachni"
+
+exec ruby $GEM_PATH/bin/rackup $env_root/arachni-ui-web/config.ru "$@"
+
